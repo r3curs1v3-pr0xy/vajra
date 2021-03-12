@@ -102,7 +102,7 @@ All the tools used by Vajra are listed here: [Link](https://github.com/r3curs1v3
 
 
 ## Contributing
-Thank you for considering making contributions to Vajra!. Start by taking a look at the below mentioned points
+Thank you for your consideration for making your valuable contributions to Vajra! Start by taking a look at the below mentioned points
 
 - Fix any issues/bugs
 - Solve opened issues
@@ -116,7 +116,7 @@ Thank you for considering making contributions to Vajra!. Start by taking a look
 
 #### Code Contributors icon with url will be shown here:
 
-#### If you have some new idea about this project, issue, feedback or found some valuable tool feel free to open an issue for just DM me via [@r3curs1v3_pr0xy](https://twitter.com/r3curs1v3_pr0xy)
+#### If you have some new idea about this project, issue, feedback or found some valuable tool feel free to open an issue or just DM me via [@r3curs1v3_pr0xy](https://twitter.com/r3curs1v3_pr0xy)
 
 
 ## If you like Vajra and wants to support
@@ -144,7 +144,7 @@ Please take a look at [CREDITS.md](https://github.com/r3curs1v3-pr0xy/vajra/blob
 
 ## Disclaimer
 
-Most of this tool done by the authors of the tool that list in [CREDITS.md](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md). I'm just put all the pieces together, plus some extra magic.
+Most of these tools have been developed by the authors of the tool that has been listed in [CREDITS.md](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md). I just put all the pieces together, plus some extra magic.
 
 This tool is for educational purposes only. You are responsible for your own actions. If you mess something up or break any laws while using this software, it's your fault, and your fault only. 
 
@@ -154,7 +154,7 @@ This tool is for educational purposes only. You are responsible for your own act
 => Vajra uses only open source tools and scripts so its accuracy depends upon those tools.
 - #### What is scalability of this framework?<br>
 => It depends upon the resources you provide to run it.
-- #### Is it gives immediate result?<br>
+- #### Does it gives immediate result?<br>
 -=> Although Vajra uses asynchronous methods but still it takes some time to complete all the scan. You can see your running scans through ongoing scan tab
 
  
