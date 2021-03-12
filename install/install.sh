@@ -4,7 +4,7 @@ sudo apt-get update;
 sudo apt-get install git;
 sudo apt-get install tar;
 wget https://github.com/ffuf/ffuf/releases/download/v1.2.1/ffuf_1.2.1_linux_amd64.tar.gz;
-tar tar -zxf ffuf_1.2.1_linux_amd64.tar.gz;
+tar -zxf ffuf_1.2.1_linux_amd64.tar.gz;
 rm LICENSE CHANGELOG.md README.md ffuf_1.2.1_linux_amd64.tar.gz;
 chmod +x ffuf && mv ffuf /bin/;
 wget https://github.com/tomnomnom/assetfinder/releases/download/v0.1.1/assetfinder-linux-amd64-0.1.1.tgz;
