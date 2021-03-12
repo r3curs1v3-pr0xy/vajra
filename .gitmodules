@@ -1,3 +1,6 @@
 [submodule "tools/Arjun"]
 	path = tools/Arjun
 	url = https://github.com/r3curs1v3-pr0xy/Arjun.git
+[submodule "tools/CertEagle"]
+	path = tools/CertEagle
+	url = https://github.com/r3curs1v3-pr0xy/CertEagle.git
