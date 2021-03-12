@@ -19,3 +19,18 @@
 [submodule "tools/Corsy"]
 	path = tools/Corsy
 	url = https://github.com/r3curs1v3-pr0xy/Corsy.git
+[submodule "tools/CORScanner"]
+	path = tools/CORScanner
+	url = https://github.com/r3curs1v3-pr0xy/CORScanner.git
+[submodule "tools/ParamSpider"]
+	path = tools/ParamSpider
+	url = https://github.com/r3curs1v3-pr0xy/ParamSpider.git
+[submodule "tools/GitDorker"]
+	path = tools/GitDorker
+	url = https://github.com/r3curs1v3-pr0xy/GitDorker.git
+[submodule "tools/SecretFinder"]
+	path = tools/SecretFinder
+	url = https://github.com/r3curs1v3-pr0xy/SecretFinder.git
+[submodule "tools/CRLF-Injection-Scanner"]
+	path = tools/CRLF-Injection-Scanner
+	url = https://github.com/r3curs1v3-pr0xy/CRLF-Injection-Scanner.git
