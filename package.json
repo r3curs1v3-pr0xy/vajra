@@ -1,0 +1,41 @@
+{
+  "name": "almightron",
+  "version": "1.0.0",
+  "description": "Almightron Recon Tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Bipul Jaiswal",
+  "license": "ISC",
+  "dependencies": {
+    "alert": "^5.0.5",
+    "alert-node": "^5.0.3",
+    "body-parser": "^1.19.0",
+    "child_process": "^1.0.2",
+    "confirm-dialog": "^0.1.2",
+    "cookie-parser": "^1.4.5",
+    "cputilization": "^1.0.0",
+    "cradle": "^0.7.1",
+    "datatables.net": "^1.10.22",
+    "datatables.net-dt": "^1.10.22",
+    "dialogs": "^2.0.1",
+    "ejs": "^3.1.5",
+    "event": "^1.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.3",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "jquery": "^3.5.1",
+    "jsdom": "^16.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "os": "^0.1.1",
+    "os-utils": "0.0.14",
+    "path": "^0.12.7",
+    "popups": "^1.1.3",
+    "prompts": "^2.3.2",
+    "readline": "^1.3.0",
+    "tap-event": "^1.0.0",
+    "xterm": "^4.9.0"
+  }
+}

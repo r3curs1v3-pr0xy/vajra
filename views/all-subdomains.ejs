@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vajra</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/popupS.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/dataTables.min.css">
+    <link rel="stylesheet" href="/static/css/buttons.dataTables.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.easypiechart.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/dataTables.min.js"></script>
+    <script src="/static/js/dataTables.buttons.min.js"></script>
+    <script src="/static/js/buttons.flash.min.js"></script>
+    <script src="/static/js/buttons.html5.min.js"></script>
+    <script src="/static/js/buttons.print.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-------------------- Nav Bar ------------------->
+
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container-fluid ml-sm-5">
+            <a class="navbar-brand mr-auto" href="#">
+                <img src="/static/img/vajra-nav.png" height="40px" width="150px">
+            </a>
+            <button class="navbar-toggler" type=" button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-5 ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link abc" href="/scan"><span class="nav-text">Home</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link abc dropdown-toggle" role="button" data-toggle="dropdown" href="#"
+                            id="monitor"><span class="nav-text">Monitoring Service</span></a>
+                        <ul class="dropdown-menu" aria-labelledby="monitor">
+                            <li><a class="dropdown-item" href="#" id="subMon">Monitor Javascript</a></li>
+                            <li><a class="dropdown-item" href="#" id="onSub" onclick="subMon()">Monitor Subdomains
+                                    Status</a></li>
+                            <li><a class="dropdown-item" href="#" id="onJS" onclick="onJs()">JsMon Status</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link abc dropdown-toggle" role="button" data-toggle="dropdown" href="#"
+                            id="services"><span class="nav-text">Tools</span></a>
+                        <ul class="dropdown-menu" aria-labelledby="services">
+                            <li><a class="dropdown-item" href="#" id="bypass403">403 Bypass</a></li>
+                            <li><a class="dropdown-item" href="#" id="hidden_param">Find Hidden Parameters</a></li>
+                            <li><a class="dropdown-item" href="#" id="shodanDorks">Shodan Search Queries</a></li>
+                            <li><a class="dropdown-item" href="#" id="googleDorks">Google Hacking</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link abc" href="/result"><span class="nav-text">Result</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link abc" id="ongoingScan" onclick="onScan()"><span class="nav-text">Ongoing Scan</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link abc" href="#" onclick="serverStats()"><span class="nav-text">Server
+                                Status</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link abc" href="https://github.com/reddelexc/hackerone-reports"><span
+                                class="nav-text">Disclosed Reports</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!------------------------------- 403 Bypass ---------------------------->
+
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">403 Bypasser</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            Enter URL
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <input type="text" class="form-control form-control-sm mr-1"
+                                placeholder="https://example.com/.config" id="url_403" />
+                        </div>
+                    </div>
+                    <div id="result403" class="row justify-content-center"
+                        style="background-color: red; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Bypass Failed!!!</b></p>
+                    </div>
+                    <div id="result4033" class="row justify-content-center"
+                        style="background-color: lightgreen; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Process Initiated</b></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="bypass403()">Hack Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!----------------------- Hidden Params with Arjun ------------------------>
+
+    <div id="parametersModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hidden Parameters with Arjun</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            Enter URL
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <input type="text" class="form-control form-control-sm mr-1"
+                                placeholder="https://example.com/endpoints" id="urls" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-4">
+                            Cookies (optional)
+                        </div>
+                        <div class="form-group col-sm-8">
+                            <input type="text" class="form-control form-control-sm mr-1" placeholder="session:abc"
+                                id="cookies" />
+                        </div>
+                    </div>
+                    <div id="failedParams" class="row justify-content-center"
+                        style="background-color: red; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Process Failed!!!</b></p>
+                    </div>
+                    <div id="successParams" class="row justify-content-center"
+                        style="background-color: lightgreen; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Process Initiated</b></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="hidden_params()">Find</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!------------------------------- Monitor Javascript ---------------------------->
+
+    <div id="javascriptModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Monitor Javascript</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                Target Name
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <input type="text" class="form-control form-control-sm mr-1" placeholder="Hackerone"
+                                    id="scanName" />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            Enter JS URLs<br>
+                        </div>
+                        <div style="height: 400px;">
+                            <textarea rows="15" cols="45" id="monUrls">Enter JS URLs</textarea>
+                        </div>
+                    </div>
+                    <div id="qsFailed" class="row justify-content-center"
+                        style="background-color: red; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Failed!!!</b></p>
+                    </div>
+                    <div id="qsSuccess" class="row justify-content-center"
+                        style="background-color: lightgreen; width: 50%; margin-left: 140px; border-radius: 10px; display: none; text-align: center;">
+                        <p class="text-white mt-3"><b>Links Added Successfully</b></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="jsMon()">Add to Scan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!------------------------------- Ongoing Javascript Monitor Status---------------------------->
+
+    <div id="onjsModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ongoing Javascript Monitoring</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div style="height: 400px;">
+                            <textarea rows="15" cols="45" id="totalTarget"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!------------------------------- Subdomains Monitor---------------------------->
+
+    <div id="subdomainModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ongoing Subdomains Monitoring</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div style="height: 400px;">
+                            <textarea rows="15" cols="45" id="subdomainsMon"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!------------------------------- Google Hacking ---------------------------->
+
+    <div id="googleDorksModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content googleDork">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title"></h5> -->
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <div style="text-align: center;">
+                            <h2 style="color: orange;"><b>Google Hacking</b></h2>
+                        </div>
+                    </div>
+                    <div class="justify-content-center">
+                        <br>
+                        <div class="col-sm-6 offset-sm-3" style="text-align: center;">
+                            <input type="text" class="form-control form-control-sm mr-1" placeholder="example.com"
+                                id="dorkTarget" />
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row" style="font-size: larger;">
+                        <div class="col-sm-5">
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(1)"> Publicly exposed
+                                    documents</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(2)"> Directory listing vulnerabilities
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(3)"> Configuration files exposed</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(4)"> <a>Database files exposed</a></div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(5)"> Log files exposed</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(6)"> Backup and old files</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(7)">Login pages</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(8)"> SQL errors</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(9)"> PHP errors / warnings</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(10)"> Search Pastebin.com / pasting sites
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(11)"> Search Github.com and Gitlab.com
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(12)"> Signup pages</div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col-sm-1"><i class="fa fa-search" style="color: orange;"></i></div>
+                                <div class="col-sm-10" onclick="googleHacking(13)"> Access Tokens</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-------------------------------- Shodan Queries ------------------------------>
+
+    <div id="shodanDorksModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Available Queries</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">http.title:"BIG-IP&reg;-Redirect"
+                        <br>
+                        vuln:"cve-2020-5902" org:bhphotovideo
+
+
+                        <h5> Useful Filter Searches for BB :</h5><br>
+                        <ul type="disc">
+                            <li>kibana content-length:217 net:”cidr”</li>
+                            <li>org:”Amazon” ssl:”target”</li>
+                            <li>ssl:”target”</li>
+                            <li>html:”Dashboard Jenkins” http.component:”jenkins”</li>
+                            <li>http.title:”302 Found”</li>
+                            <li>http.component%3A”java”</li>
+                            <li>https://www.shodan.io/host/ip(35.213.130.89)</li>
+                            <li>X-Redirect-By: WordPress ssl:”name”</li>
+                            <li>html:”eBay Inc. All Right Reserved”</li>
+                            <li>X-Amz-Bucket-Region</li>
+                            <li>x-jenkins 200</li>
+                            <li>X-Generator: Drupal 7</li>
+                            <li>ssl:Google</li>
+                            <li>org:’Name’ port:’80’</li>
+                            <li>all:”mongodb server information” all:”metrics”</li>
+                            <li>port:27017 -all:”partially” all:”fs.files”</li>
+                            <li>port:”9200" all:”elastic indices”</li>
+                            <li>product:elastic port:9200</li>
+                            <li>product: CouchDB</li>
+                            <li>title:”system dashboard” html:jira</li>
+                            <li>product: “apache tomcat”</li>
+                            <li>ssl%3A”development”+org%3A”Amazon.com”+port%3A”number”</li>
+                            <li>http.component:ruby port:3000</li>
+                            <li>html:”secret_key_base”</li>
+                            <li>html:”rack.version”</li>
+                            <li>http.html:QUERY ssl:”domain.com”</li>
+                            <li> http.favicon.hash:81586312 200</li>
+                            <li>html:/dana-na/ Pulse Secure VPN exploit</li>
+                            <h4>More queries</h4>
+
+                            <h5>https://github.com/jakejarvis/awesome-shodan-queries</h5>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-------------------------------- Ongoing Scan ------------------------------>
+        <div id="ongoingscan" class="modal fade" tableindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ongoing Scan</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="box">
+                                <div class="chart" data-percent="70"><p id="scanList"></p></div>
+                            </div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Scan</p>
+                            <div class="line"></div>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Total Ongoing Scan</p>
+                            <br>
+                            <br>
+                            <div>
+                                <div style="height: 400px;">
+                                    <textarea rows="15" cols="40" id="scanData"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="mt-5">
+        <!-- <div class="row"> -->
+        <table id="target" class="display ml-5" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Subdomains</th>
+                    <th scope="col">Status Code</th>
+                    <th scope="col">IP</th>
+                    <th scope="col">Title</th>
+
+                </tr>
+            </thead>
+            <tbody style="color: black;">
+                <% var i=0; %>
+                    <% data.all_subdomains.forEach((target)=>{ i=i+1;%>
+                        <tr>
+                            <th scope="row">
+                                <%= i %>
+                            </th>
+                            <td>
+                                <%= target['url'] %>
+                            </td>
+                            <td>
+                                <%= target['status'] %>
+                            </td>
+                            <td>
+                                <%= target['ip'] %>
+                            </td>
+                            <td>
+                                <%= target['title'] %>
+                            </td>
+                        </tr>
+                        <% })%>
+
+            </tbody>
+        </table>
+        <!-- </div> -->
+
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#target').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                pageLength: 100
+            });
+            $("#bypass403").click(function () {
+                $("#myModal").modal('show')
+            })
+            $("#hidden_param").click(function () {
+                $("#parametersModal").modal('show')
+            })
+            $("#subMon").click(function () {
+                $("#javascriptModal").modal('show')
+            })
+            $("#onJS").click(function () {
+                $("#onjsModal").modal('show')
+            })
+            $("#onSub").click(function () {
+                $("#subdomainModal").modal('show')
+            })
+            $("#googleDorks").click(function () {
+                $("#googleDorksModal").modal('show')
+            })
+            $("#shodanDorks").click(function () {
+                $("#shodanDorksModal").modal('show')
+            })
+            $("#ongoingScan").click(function () {
+                $("#ongoingscan").modal('show')
+            })
+            $('.chart').easyPieChart({
+                barColor:'#17d3e6',
+                scaleColor:false,
+                lineWidth:6
+            })
+        });
+    </script>
+
+<div class="footer" style="text-align: right; bottom: 0; position: relative; width: 50%; left: 0;">
+    <p>Developed By <a href="https://twitter.com/r3curs1v3_pr0xy" target="_blank">r3curs1v3_pr0xy</a></p>
+</div>
+
+</body>
+
+</html>

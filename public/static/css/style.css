@@ -1,0 +1,232 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+html{
+	height: 100%;
+}
+body {
+	padding: 50px 0px 0px 0px;
+	z-index: 0;
+	background-color: #343a40;
+	color: whitesmoke;
+	margin:0;
+	height: 100%;
+}
+.navbar{
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+.nav-item {
+	margin: 0px 20px 0px 20px;
+	color: white;
+	font-size: 22px;
+}
+
+.nav-link:hover {
+	color: tomato;
+}
+
+.nav-text {
+	color: white;
+}
+
+.nav-text:hover {
+	color: greenyellow;
+}
+
+.navbar-dark {
+	background-color: #353c48;
+}
+.myButton{
+	background-color: #049953;
+    color: #fff;
+    border: 3px solid #01b662;
+	font-size: 20px;
+	border-radius: 10px;
+	height: 45px;
+	width: 250px;
+}
+/*------------------- Side Bar ------------------*/
+
+
+#main-container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	
+}
+
+#sidebar {
+	width: 15%;
+	vertical-align: top;
+	background-color:#353c48;
+	z-index: 1;
+	position: absolute;
+	margin-top: -25px;
+	columns: #fff;
+	box-shadow: 0 5px 1px rgba(0, 0, 0, 0.3);
+}
+#mySidebar{
+	height: 92vh;
+	color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+	scrollbar-width: none;
+}
+@media only screen and (max-width: 768px){
+	#sidebar {
+		width: 80%;
+		vertical-align: top;
+		background-color: #353c48;
+		z-index: 1;
+		position: absolute;
+		margin-top: -25px;
+	}	
+}
+
+#sidebar a {
+	display: block;
+	padding: 10px;
+	color: rgba(255,255,255, 0.5);
+	margin: 15px 0 0 0;
+	text-decoration: none;
+}
+
+#sidebar a:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white !important;
+}
+.side-btn{
+	background:transparent;
+	border: 0;
+	margin-left: 200px;
+	margin-top: 15px;
+}
+
+/*--------------------- Check Box -----------------*/
+.side-list label{
+	cursor: pointer;
+}
+.side-list label input[type="checkbox"]{
+	display: none;
+}
+.side-list label span{
+	position: relative;
+	display: block;
+	background: transparent;
+	color: #e6e6e6;
+	font-size: 20px;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	width: 274px;
+	padding-left: 15px;
+	border-radius: 10px;
+}
+.side-list:hover{
+	background-color: #34eb7a;
+}
+.side-list label input[type="checkbox"]:checked + span{
+	background-color: #2BAE66FF;
+}
+
+/*----------------- Dropdown List ----------------*/
+.drop-list label span{
+	position: relative;
+	display: block;
+	background: transparent;
+	color: #fff;
+	font-size: 20px;
+	transition: 0.3s;
+	width: 245px;
+	padding-left: 15px;
+	border-radius: 10px;
+}
+.drop-list label input[type="checkbox"]:checked + span{
+	background-color: #2BAE66FF;
+}
+
+
+.googleDork{
+	height: 700px;
+	width: 900px;
+	align-content: center;
+}
+/*----------------- Modal ----------------*/
+
+.modal-dialog{
+	border:1px solid greenyellow;;
+	border-radius: 10px;
+}
+.modal-header{
+	background-color: #353c48;
+}
+.modal-header textarea{
+	background-color: #353c48;
+}
+.modal-body{
+	background-color: #343a40;
+}
+.modal-footer{
+	background-color: #353c48;
+}
+.modal-header button{
+	color: coral;
+}
+
+/*----------------- Monitoring Service----------------*/
+
+#monUrls{
+	background-color: #353c48;
+	color: whitesmoke;
+	border-radius: 10px;
+}
+#subdomainsMon{
+	background-color: #353c48;
+	color: whitesmoke;
+	border-radius: 10px;
+}
+#scanData{
+	background-color: #353c48;
+	color: whitesmoke;
+	border-radius: 10px;
+}
+#totalTarget{
+	background-color: #353c48;
+	color: whitesmoke;
+	border-radius: 10px;
+}
+
+/*----------------- Pie Chart ----------------*/
+.container .box{
+	width: 25%;
+	float: left;
+}
+.container .box .chart{
+	position: relative;
+	width: 110px;
+	height: 110px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 30px;
+	line-height: 110px;
+
+}
+.container .box canvas{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.line{
+	height: 8px;
+	width: 250px;
+	margin-left: 120px;
+	border-radius: 5px;
+	background-color:skyblue;
+}
+.line2{
+	height: 8px;
+	width: 250px;
+	margin-left: 200px;
+	border-radius: 5px;
+	background-color:skyblue;
+}
