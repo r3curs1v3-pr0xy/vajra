@@ -4,3 +4,18 @@
 [submodule "tools/CertEagle"]
 	path = tools/CertEagle
 	url = https://github.com/r3curs1v3-pr0xy/CertEagle.git
+[submodule "tools/byp4xx"]
+	path = tools/byp4xx
+	url = https://github.com/r3curs1v3-pr0xy/byp4xx.git
+[submodule "tools/jsmon"]
+	path = tools/jsmon
+	url = https://github.com/r3curs1v3-pr0xy/jsmon.git
+[submodule "tools/FavFreak"]
+	path = tools/FavFreak
+	url = https://github.com/r3curs1v3-pr0xy/FavFreak.git
+[submodule "tools/LinkFinder"]
+	path = tools/LinkFinder
+	url = https://github.com/r3curs1v3-pr0xy/LinkFinder.git
+[submodule "tools/Corsy"]
+	path = tools/Corsy
+	url = https://github.com/r3curs1v3-pr0xy/Corsy.git
