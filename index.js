@@ -1713,16 +1713,10 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 //Misconfigurations
 
                 if (req.body.misconfigurations && !req.body.template_subdomains) {
-                    ongoing_scan.push("Template Scan [Misc] on " + req.body.domain); // add to ongoing scan array
-
+                  
                     exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/misconfiguration/ -o ./tools/' + req.body.domain + "_misconfigurations.txt", { maxBuffer: 1024 * 1200 }, (err) => {
                         if (err) {
                             console.log(err);
-                            //Removes from ongoing Scan
-                            const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                            if (index > -1) {
-                                ongoing_scan.splice(index, 1);
-                            }
                         }
                         else {
                             var x = "Target is Not Vulnerable";
@@ -1732,16 +1726,6 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                                 }, (err, res) => {
                                     if (err) {
                                         console.log(err);
-                                        //Removes from ongoing Scan
-                                        const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                        if (index > -1) {
-                                            ongoing_scan.splice(index, 1);
-                                        }
-                                    }
-                                    //Removes from ongoing Scan
-                                    const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                    if (index > -1) {
-                                        ongoing_scan.splice(index, 1);
                                     }
                                 });
                             }
@@ -1752,16 +1736,6 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                                 }, (err, res) => {
                                     if (err) {
                                         console.log(err);
-                                        //Removes from ongoing Scan
-                                        const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                        if (index > -1) {
-                                            ongoing_scan.splice(index, 1);
-                                        }
-                                    }
-                                    //Removes from ongoing Scan
-                                    const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                    if (index > -1) {
-                                        ongoing_scan.splice(index, 1);
                                     }
                                 });
                                 exec('rm -f ./tools/' + req.body.domain + '_misconfigurations.txt', (err) => {
@@ -1781,7 +1755,6 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 // Misconfigurations with subdomains
 
                 if (req.body.misconfigurations && req.body.template_subdomains) {
-                    ongoing_scan.push("Template Scan [Misc] on " + req.body.domain); // add to ongoing scan array
                     async function getSubdomains() {
                         await db.get('valid_subdomains', (err, res) => {
                             res.valid_subdomains.forEach((element) => {
@@ -1791,11 +1764,6 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                                 await exec('./tools/templates-scan.sh ' + req.body.domain + ' misconfigurations', { maxBuffer: 1024 * 2200 }, (err) => {
                                     if (err) {
                                         console.log(err);
-                                        //Removes from ongoing Scan
-                                        const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                        if (index > -1) {
-                                            ongoing_scan.splice(index, 1);
-                                        }
                                     }
                                     else {
                                         var data = fs.readFileSync('./tools/' + req.body.domain + '_subdomain_misconfigurations.txt', { encoding: 'utf-8' }).split("\n");
@@ -1804,26 +1772,11 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                                         }, (err) => {
                                             if (err) {
                                                 console.log(err);
-                                                //Removes from ongoing Scan
-                                                const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                                if (index > -1) {
-                                                    ongoing_scan.splice(index, 1);
-                                                }
-                                            }
-                                            //Removes from ongoing Scan
-                                            const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                            if (index > -1) {
-                                                ongoing_scan.splice(index, 1);
                                             }
                                         });
                                         exec('rm -f ./tools/' + req.body.domain + '_subdomain_misconfigurations.txt', (err) => {
                                             if (err) {
                                                 console.log(err);
-                                                //Removes from ongoing Scan
-                                                const index = ongoing_scan.indexOf("Template Scan [Misc] on " + req.body.domain);
-                                                if (index > -1) {
-                                                    ongoing_scan.splice(index, 1);
-                                                }
                                             }
                                         });
                                         exec('rm -f ./tools/' + req.body.domain + '_misconfigurations_subdomain.txt', (err) => {
