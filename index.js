@@ -1464,7 +1464,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
 
                 if (req.body.files && !req.body.template_subdomains) {
                     ongoing_scan.push("Template Scan [Files] on " + req.body.domain); // add to ongoing scan array
-                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/files/ -o ./tools/' + req.body.domain + "_files.txt", (err) => {
+                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/exposures/ -o ./tools/' + req.body.domain + "_files.txt", (err) => {
                         if (err) {
                             console.log(err);
                             //Removes from ongoing Scan
@@ -1589,7 +1589,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 if (req.body.panels && !req.body.template_subdomains) {
                     ongoing_scan.push("Template Scan [Panels] on " + req.body.domain); // add to ongoing scan array
 
-                    exec('echo https://www.' + req.body.domain + '| nuclei -t ./tools/nuclei-templates/panels/ -o ./tools/' + req.body.domain + "_panels.txt", { maxBuffer: 1024 * 1200 }, (err) => {
+                    exec('echo https://www.' + req.body.domain + '| nuclei -t ./tools/nuclei-templates/exposed-panels/ -o ./tools/' + req.body.domain + "_panels.txt", { maxBuffer: 1024 * 1200 }, (err) => {
                         if (err) {
                             console.log(err);
                             //Removes from ongoing Scan
@@ -1715,7 +1715,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 if (req.body.misconfigurations && !req.body.template_subdomains) {
                     ongoing_scan.push("Template Scan [Misc] on " + req.body.domain); // add to ongoing scan array
 
-                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/security-misconfiguration/ -o ./tools/' + req.body.domain + "_misconfigurations.txt", { maxBuffer: 1024 * 1200 }, (err) => {
+                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/misconfiguration/ -o ./tools/' + req.body.domain + "_misconfigurations.txt", { maxBuffer: 1024 * 1200 }, (err) => {
                         if (err) {
                             console.log(err);
                             //Removes from ongoing Scan
@@ -2098,7 +2098,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 if (req.body.tokens && !req.body.template_subdomains) {
                     ongoing_scan.push("Template Scan [Token] on " + req.body.domain); // add to ongoing scan array
 
-                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/tokens/ -o ./tools/' + req.body.domain + "_tokens.txt", { maxBuffer: 1024 * 1200 }, (err) => {
+                    exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/exposed-tokens/ -o ./tools/' + req.body.domain + "_tokens.txt", { maxBuffer: 1024 * 1200 }, (err) => {
                         if (err) {
                             console.log(err);
                             //Removes from ongoing Scan
