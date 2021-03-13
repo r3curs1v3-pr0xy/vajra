@@ -1,17 +1,17 @@
 #!/bin/bash
 
 if [ "$2" = "files" ]; then
-    cat ./tools/$1_files_subdomain.txt | nuclei -t ./tools/nuclei-templates/files/ -no-color -silent >> ./tools/$1_subdomain_files.txt
+    cat ./tools/$1_files_subdomain.txt | nuclei -t ./tools/nuclei-templates/exposures/ -no-color -silent >> ./tools/$1_subdomain_files.txt
 
 fi
 
 if [ "$2" = "panels" ]; then
-    cat ./tools/$1_panels_subdomain.txt | nuclei -t ./tools/nuclei-templates/panels/ -no-color -silent >> ./tools/$1_subdomain_panels.txt
+    cat ./tools/$1_panels_subdomain.txt | nuclei -t ./tools/nuclei-templates/exposed-panels/ -no-color -silent >> ./tools/$1_subdomain_panels.txt
 
 fi
 
 if [ "$2" = "misconfigurations" ]; then
-    cat ./tools/$1_misconfigurations_subdomain.txt | nuclei -t ./tools/nuclei-templates/security-misconfiguration/ -no-color -silent >> ./tools/$1_subdomain_misconfigurations.txt
+    cat ./tools/$1_misconfigurations_subdomain.txt | nuclei -t ./tools/nuclei-templates/misconfiguration/ -no-color -silent >> ./tools/$1_subdomain_misconfigurations.txt
 
 fi
 
@@ -26,6 +26,6 @@ if [ "$2" = "vulnerabilities" ]; then
 fi
 
 if [ "$2" = "tokens" ]; then
-    cat ./tools/$1_tokens_subdomain.txt | nuclei -t ./tools/nuclei-templates/tokens/ -no-color -silent >> ./tools/$1_subdomain_tokens.txt
+    cat ./tools/$1_tokens_subdomain.txt | nuclei -t ./tools/nuclei-templates/exposed-tokens/ -no-color -silent >> ./tools/$1_subdomain_tokens.txt
 
 fi
