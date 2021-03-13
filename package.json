@@ -1,0 +1,28 @@
+{
+  "name": "vajra",
+  "version": "1.0.0",
+  "description": "Vajra is a highly customizable target and scope based automated web hacking framework to automate boring recon tasks and same scans for multiple target during web applications penetration testing.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "r3curs1v3-pr0xy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "childprocess": "^2.0.2",
+    "cookie-parser": "^1.4.5",
+    "cradle": "^0.7.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.6",
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "jquery": "^3.6.0",
+    "jsdom": "^16.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "path": "^0.12.7",
+    "readline": "^1.3.0",
+    "xterm": "^4.11.0"
+  }
+}
