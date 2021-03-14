@@ -3,7 +3,9 @@
 # Installation from Aptitude repository
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 sudo apt-get update
-sudo apt-get install -y wget git tar jq libpcap-dev curl python3 python3-pip python python-pip screen docker sysstat masscan npm nodejs software-properties-common;
+sudo apt-get install -y wget git tar jq libpcap-dev curl python python-pip python3 python3-pip screen docker sysstat masscan nodejs software-properties-common;
+
+sudo snap install docker
 
 # pip3 installation requirements
 pip3 install -r requirements_pip3.txt
@@ -64,4 +66,3 @@ npm i -S body-parser childprocess cookie-parser cradle ejs express express-rate-
 # Couchdb from docker
 sudo docker pull couchdb
 sudo docker run -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=hackwithme -d couchdb
-
