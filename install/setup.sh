@@ -72,3 +72,7 @@ sudo sed -i 's/;port = 5984/port = 5984/g' /var/snap/couchdb/5/etc/local.ini
 sudo sed -i 's/;bind_address = 127.0.0.1/bind_address = 127.0.0.1/g' /var/snap/couchdb/5/etc/local.ini
 sudo sed -i 's/;admin = mysecretpassword/admin = hackwithme/g' /var/snap/couchdb/5/etc/local.ini
 sudo snap restart couchdb
+
+sudo chmod +x ../tools/*
+
+echo "[+] Vajra is now installed"
