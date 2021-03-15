@@ -3,9 +3,9 @@
 # Installation from Aptitude repository
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 sudo apt-get update
-sudo apt-get install -y wget git tar jq libpcap-dev curl python python-pip python3 python3-pip screen docker sysstat masscan nodejs software-properties-common;
+sudo apt-get install -y wget git tar snapd jq sed libpcap-dev curl python python-pip python3 python3-pip screen docker sysstat masscan nodejs software-properties-common;
 
-sudo snap install docker
+sudo snap install couchdb
 
 # pip3 installation requirements
 pip3 install -r requirements_pip3.txt
@@ -63,6 +63,12 @@ rm amass_linux_amd64.zip;
 sudo npm install broken-link-checker -g 
 npm i -S body-parser childprocess cookie-parser cradle ejs express express-rate-limit fs http jsdom jsonwebtoken path readline xterm jquery
 
-# Couchdb from docker
-sudo docker pull couchdb
-sudo docker run -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=hackwithme -d couchdb
+# Couchdb configuration
+sudo snap set couchdb admin=hackwithme # This doesn't always work
+# sudo snap set couchdb name=couchdb@127.0.0.1 setcookie=cutter # This doesn't always work
+sudo snap start couchdb
+# In the case snap does not set the password at the first launch, we manually set the interface and restart couchdb
+sudo sed -i 's/;port = 5984/port = 5984/g' /var/snap/couchdb/5/etc/local.ini
+sudo sed -i 's/;bind_address = 127.0.0.1/bind_address = 127.0.0.1/g' /var/snap/couchdb/5/etc/local.ini
+sudo sed -i 's/;admin = mysecretpassword/admin = hackwithme/g' /var/snap/couchdb/5/etc/local.ini
+sudo snap restart couchdb
