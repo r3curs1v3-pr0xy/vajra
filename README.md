@@ -1,5 +1,5 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![logo](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/images/logo.png)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![contribution](https://camo.githubusercontent.com/f5054ffcd4245c10d3ec85ef059e07aacf787b560f83ad4aec2236364437d097/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f6e747269627574696f6e732d77656c636f6d652d627269676874677265656e2e7376673f7374796c653d666c6174)
 [![PyPi Python Versions](https://img.shields.io/pypi/pyversions/yt2mp3.svg)](https://pypi.python.org/pypi/yt2mp3/)
@@ -118,9 +118,11 @@ Thank you for your consideration for making your valuable contributions to Vajra
 - Support this project by sponsoring/donating
 
 
-#### Financial Contributors icon with url will be shown here:
+#### Financial Contributors:
 
-#### Code Contributors icon with url will be shown here:
+[![Deviner](https://avatars.githubusercontent.com/u/61959752?s=60&u=602bba1cc388927a89539410acbd913ff1862e12&v=4)](https://twitter.com/0xdeviner)
+
+#### Code Contributors:
 
 #### If you have some new idea about this project, issue, feedback or found some valuable tool feel free to open an issue or just DM me via [@r3curs1v3_pr0xy](https://twitter.com/r3curs1v3_pr0xy)
 
