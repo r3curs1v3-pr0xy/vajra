@@ -3,11 +3,11 @@
 # Installation from Aptitude repository
 sudo curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -;
 sudo apt-get update
-sudo apt-get install -y wget git tar snapd jq sed libpcap-dev curl python python-pip python3 python3-pip screen docker sysstat masscan nodejs software-properties-common
+sudo apt-get install -y wget git tar snapd jq sed libpcap-dev curl python python-pip python3 python3-pip screen sysstat masscan nodejs software-properties-common
 # GCP repository catches error when installing python, so we test if error and install with this
 if [ $? != 0 ]; 
 then
-    sudo apt-get install -y wget git tar snapd jq sed libpcap-dev curl python2 python-pip-whl python3 python3-pip screen docker sysstat masscan nodejs software-properties-common
+    sudo apt-get install -y wget git tar snapd jq sed libpcap-dev curl python2 python-pip-whl python3 python3-pip screen sysstat masscan nodejs software-properties-common
 fi
 
 echo "You are all updated now, bro!"
