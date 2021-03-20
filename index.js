@@ -1864,7 +1864,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 //Technologies with subdomains
 
                 if (req.body.technologies && req.body.template_subdomains) {
-                    ongoing_scan.push("Template Scan [Misc] on " + req.body.domain); // add to ongoing scan array
+                    ongoing_scan.push("Template Scan [Tech] on " + req.body.domain); // add to ongoing scan array
                     async function getSubdomains() {
                         await db.get('valid_subdomains', (err, res) => {
                             res.valid_subdomains.forEach((element) => {
