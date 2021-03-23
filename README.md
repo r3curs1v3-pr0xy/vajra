@@ -103,6 +103,10 @@ All the installation instructions are available at wiki page. Find the wiki docu
 
 https://github.com/r3curs1v3-pr0xy/vajra/wiki/Installation
 
+## Running with docker-compose
+Make changes to files (add api tokens, etc.) and run ```docker-compose up```.
+If you wanna make changes later run ```docker-compose build``` and ```docker-compose up``` again.
+
 ## Tools used by Vajra
 All the tools used by Vajra are listed here: [Link](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md)
 
