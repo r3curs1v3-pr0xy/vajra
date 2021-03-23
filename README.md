@@ -12,6 +12,7 @@
     * [Key Feaures](#key-features)
     * [What Vajra does](#what-vajra-does)
 - [Installation](#installation)
+- [Running with docker-compose](#running-with-docker-compose)
 - [Tools Used by Vajra](#tools-used-by-vajra)
 - [Contributing](#contributing)
 - [License](#license)
