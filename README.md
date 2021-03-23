@@ -12,6 +12,7 @@
     * [Key Feaures](#key-features)
     * [What Vajra does](#what-vajra-does)
 - [Installation](#installation)
+- [Running in docker-compose](#running-in-docker-compose)
 - [Tools Used by Vajra](#tools-used-by-vajra)
 - [Contributing](#contributing)
 - [License](#license)
@@ -102,6 +103,10 @@ password: toor
 All the installation instructions are available at wiki page. Find the wiki documentation here:
 
 https://github.com/r3curs1v3-pr0xy/vajra/wiki/Installation
+
+## Running in docker-compose
+Make changes in files and run ```docker-compose up```.
+If you gonna make more changes after - do ```docker-compose build``` first, and ```docker-compose up``` again.
 
 ## Tools used by Vajra
 All the tools used by Vajra are listed here: [Link](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md)
