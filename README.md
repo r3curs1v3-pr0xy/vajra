@@ -38,9 +38,6 @@ I created this project for my personal use (about 6 months ago)  but looking at 
 <br>
 
 
-None of the scan will work in demo website.
-Username: root
-password: toor
 # Demo
 [![Demo Video](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/images/demo.png)](https://www.youtube.com/watch?v=WLurj5Lg8cI)
 
@@ -122,7 +119,7 @@ Thank you for your consideration for making your valuable contributions to Vajra
 [![Deviner](https://avatars.githubusercontent.com/u/61959752?s=60&u=602bba1cc388927a89539410acbd913ff1862e12&v=4)](https://twitter.com/0xdeviner)
 
 #### Code Contributors:
-
+[![Anas Jamal](https://avatars.githubusercontent.com/u/68706899?s=60&u=79088284cb876cd76fcbef4850066d291cce72c6&v=4)](https://twitter.com/0xanasjamal)
 #### If you have some new idea about this project, issue, feedback or found some valuable tool feel free to open an issue or just DM me via [@r3curs1v3_pr0xy](https://twitter.com/r3curs1v3_pr0xy)
 
 
