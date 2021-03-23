@@ -37,7 +37,6 @@ I created this project for my personal use (about 6 months ago)  but looking at 
 #### Currently, I added only 27 unique bug bounty feature to it but more will be added in near future.
 <br>
 
-**Visit this URL for Demo:** https://hackwithproxy.tech/login
 
 None of the scan will work in demo website.
 Username: root
