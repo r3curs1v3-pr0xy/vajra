@@ -48,6 +48,7 @@ sudo npm install broken-link-checker -g;
 cd ../tools/CRLF-Injection-Scanner/;
 sudo python3 setup.py install;
 cd ../;
+chmod +x ./LinkFinder/links.sh;
 git clone https://github.com/projectdiscovery/nuclei-templates.git;
 cd ../;
 cd ./tools/jsmon/;
