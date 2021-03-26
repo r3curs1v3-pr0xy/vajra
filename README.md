@@ -12,6 +12,7 @@
     * [Key Feaures](#key-features)
     * [What Vajra does](#what-vajra-does)
 - [Installation](#installation)
+- [Running with docker-compose](#running-with-docker-compose)
 - [Tools Used by Vajra](#tools-used-by-vajra)
 - [Contributing](#contributing)
 - [License](#license)
@@ -98,6 +99,10 @@ I created this project for my personal use (about 6 months ago)  but looking at 
 All the installation instructions are available at wiki page. Find the wiki documentation here:
 
 https://github.com/r3curs1v3-pr0xy/vajra/wiki/Installation
+
+## Running with docker-compose
+Make changes to files (add api tokens, etc.) and run ```docker-compose up```.
+If you wanna make changes later run ```docker-compose build``` and ```docker-compose up``` again.
 
 ## Tools used by Vajra
 All the tools used by Vajra are listed here: [Link](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md)

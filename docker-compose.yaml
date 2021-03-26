@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  vajra:
+    container_name: vajra
+    restart: always
+    working_dir: /app
+    #volumes:
+     # - ./:/app
+    ports:
+      - "8080:80"
+    depends_on:
+      - couchdb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "npm run start"
+    networks:
+      - vajra-network
+  
+  couchdb:
+    image: couchdb:3.1.1
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=hackwithme
+    ports:
+      - '5984:5984'
+      - '4369:4369'
+      - '9100:9100'
+    volumes:
+      - couchdb_data:/opt/couchdb/data
+    networks:
+      - vajra-network
+
+      
+volumes:
+  couchdb_data:
+    driver: local
+    
+
+networks:
+  vajra-network:
