@@ -107,6 +107,8 @@ https://github.com/r3curs1v3-pr0xy/vajra/wiki/Installation
 
 If you wanna make changes later then update files and run ```docker-compose build``` and ```docker-compose up``` again.
 
+For detailed instructions, follow this [URL](https://github.com/r3curs1v3-pr0xy/vajra/wiki/Running-with-docker-compose)
+
 ## Tools used by Vajra
 All the tools used by Vajra are listed here: [Link](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/CREDITS.md)
 
