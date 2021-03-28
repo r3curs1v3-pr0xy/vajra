@@ -16,6 +16,7 @@ const jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const { get } = require('jquery');
+require('dotenv').config();
 
 //This keeps vajra running in every situation
 process.on("uncaughtException", function (err) {
@@ -42,6 +43,14 @@ var urlencodedParser = bodyParser.urlencoded({
     extended: false
 });
 
+//JWT Secret
+
+var JWT_SECRET = process.env.JWT_SECRET;
+
+//CouchDB Password
+
+var DB_PASS = process.env.CouchDB_PASSWORD;
+
 //Takes get request i.e when page load
 app.get('', (req, res) => {
     res.render('home', {
@@ -57,7 +66,7 @@ var ongoing_scan = []; //store list of ongoing scan
 
 app.post('/form-data/', urlencodedParser, (req, res) => {
 
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -69,7 +78,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
             var connection = new (cradle.Connection)('http://127.0.0.1', 5984, {
                 auth: {
                     username: 'admin',
-                    password: 'hackwithme'
+                    password: DB_PASS
                 },
                 cache: true,
                 retries: 3,
@@ -102,7 +111,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                         });
 
                         //Update revision limit of database
-                        exec('curl -X PUT -d "10000000" http://admin:hackwithme@127.0.0.1:5984/' + target + '/_revs_limit', (err) => {
+                        exec('curl -X PUT -d "10000000" http://admin:' + DB_PASS + '@127.0.0.1:5984/' + target + '/_revs_limit', (err) => {
                             if (err) {
                                 console.log(err);
                             };
@@ -1713,7 +1722,7 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
                 //Misconfigurations
 
                 if (req.body.misconfigurations && !req.body.template_subdomains) {
-                  
+
                     exec('echo https://www.' + req.body.domain + ' | nuclei -t ./tools/nuclei-templates/misconfiguration/ -o ./tools/' + req.body.domain + "_misconfigurations.txt", { maxBuffer: 1024 * 1200 }, (err) => {
                         if (err) {
                             console.log(err);
@@ -3024,12 +3033,12 @@ app.post('/form-data/', urlencodedParser, (req, res) => {
 //shows target name in home page
 
 app.get('/result/', (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
         else {
-            exec('curl -X GET http://admin:hackwithme@127.0.0.1:5984/_all_dbs', (err, val) => { //get list of all database
+            exec('curl -X GET http://admin:' + DB_PASS + '@127.0.0.1:5984/_all_dbs', (err, val) => { //get list of all database
                 if (err) {
                     console.log(err);
                 }
@@ -3051,12 +3060,12 @@ app.get('/result/', (req, res) => {
 
 app.post('/target/', urlencodedParser, (req, res) => {
 
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
         else {
-            exec('curl -X GET http://admin:hackwithme@127.0.0.1:5984/' + req.body.check + '/_all_docs', (err, val) => { //get list of all documents of target
+            exec('curl -X GET http://admin:' + DB_PASS + '@127.0.0.1:5984/' + req.body.check + '/_all_docs', (err, val) => { //get list of all documents of target
                 if (err) {
                     console.log(err);
                 }
@@ -3077,7 +3086,7 @@ app.post('/target/', urlencodedParser, (req, res) => {
 
 app.post('/show-value/', urlencodedParser, (req, res) => {
 
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3086,7 +3095,7 @@ app.post('/show-value/', urlencodedParser, (req, res) => {
             var connection = new (cradle.Connection)('http://127.0.0.1', 5984, {
                 auth: {
                     username: 'admin',
-                    password: 'hackwithme'
+                    password: DB_PASS
                 },
                 cache: true,
                 retries: 3,
@@ -3162,7 +3171,7 @@ app.get('/server-status/', (req, res) => {
 
     //RAM Usage
 
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3198,7 +3207,7 @@ app.get('/server-status/', (req, res) => {
 //======================= Bypass 403 ========================
 
 app.get('/bypass-403', (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3223,7 +3232,7 @@ app.get('/bypass-403', (req, res) => {
 app.get('/arjun', (req, res) => {
 
     //if headers/cookies are not included
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3259,7 +3268,7 @@ app.get('/arjun', (req, res) => {
 //======================= Javascript Monitor ========================
 
 app.get('/jsmon', (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3291,7 +3300,7 @@ app.get('/jsmon', (req, res) => {
 //======================= Subdomains Monitor with CertEagle ========================
 
 app.get("/certeagle", (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3312,7 +3321,7 @@ app.get("/certeagle", (req, res) => {
 
 //======================= Checks Ongoing Scan ========================
 app.get("/ongoing-scan", (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3326,20 +3335,20 @@ app.get("/ongoing-scan", (req, res) => {
 
 //======================= Log In ========================
 
-var username = 'root';  //change this to update password
-var passs = 'toor';
+var username = process.env.USERNAME;
+var passs = process.env.PASSWORD;
 
-app.get('/login', (req, res) => {
+app.get("/login", (req, res) => {
     res.render('login');
 });
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 10, message: "Hacker's can't be hacked easily" });
 
 
-app.post('/login', urlencodedParser, limiter, (req, res) => {
+app.post("/login", urlencodedParser, limiter, (req, res) => {
     if (req.body.users == username && req.body.passs == passs) {
         const user = username;
-        jwt.sign({ user }, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', { expiresIn: '3600s' }, (err, token) => {
+        jwt.sign({ user }, JWT_SECRET, { expiresIn: '3600s' }, (err, token) => {
             res.cookie('auth', token);
             res.redirect('/scan');
         });
@@ -3350,7 +3359,7 @@ app.post('/login', urlencodedParser, limiter, (req, res) => {
 });
 
 app.get('/scan', (req, res) => {
-    jwt.verify(req.cookies.auth, 'fIskNyRbdGmdaekbMSRlAkU5RIJc6V7I', (err) => {
+    jwt.verify(req.cookies.auth, JWT_SECRET, (err) => {
         if (err) {
             res.status(403).send("You're not authorized to use this framework!");
         }
@@ -3360,8 +3369,6 @@ app.get('/scan', (req, res) => {
     });
 });
 
-
-//listen on port 80
 app.listen(80, () => {
     console.log("Listening on port 80");
 });

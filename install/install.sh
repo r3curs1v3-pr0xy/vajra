@@ -106,3 +106,4 @@ npm i path;
 npm i readline;
 npm i xterm;
 npm i jquery;
+npm i dotenv;
