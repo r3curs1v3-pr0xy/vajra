@@ -127,6 +127,7 @@ Thank you for your consideration for making your valuable contributions to Vajra
 #### Financial Contributors:
 
 [![Deviner](https://avatars.githubusercontent.com/u/61959752?s=60&u=602bba1cc388927a89539410acbd913ff1862e12&v=4)](https://twitter.com/0xdeviner)
+[![ABHISAR PANDEY](https://avatars.githubusercontent.com/u/50749078?v=4&s=60)](https://twitter.com/imabhisarpandey)
 
 #### Code Contributors:
 [![Anas Jamal](https://avatars.githubusercontent.com/u/68706899?s=60&u=79088284cb876cd76fcbef4850066d291cce72c6&v=4)](https://twitter.com/0xanasjamal)
