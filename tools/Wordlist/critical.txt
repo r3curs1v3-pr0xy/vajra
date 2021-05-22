@@ -1,3 +1,4 @@
+elmah.axd
 dns.alpha.kubernetes.io
 apiserver-aggregator.key
 etcd.log
