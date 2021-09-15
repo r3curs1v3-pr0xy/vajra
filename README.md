@@ -40,7 +40,7 @@ I created this project for my personal use (about 6 months ago)  but looking at 
 
 
 # Demo
-[![Demo Video](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/images/demo.png)](https://www.youtube.com/watch?v=WLurj5Lg8cI)
+[![Demo Video](https://github.com/r3curs1v3-pr0xy/vajra/blob/main/images/demo.png)](https://drive.google.com/file/d/1O-KKhK54jXMUPAiOS8ZWnvZ4sFxDHy7a/view)
 
 ## Key Features
  - Highly target specific scan
