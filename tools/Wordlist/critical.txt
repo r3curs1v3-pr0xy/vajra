@@ -497,6 +497,8 @@ backup/ProductTemplate.java.bak
 .wp-config.php.swp
 .www_acl
 .wwwacl
+.well-known.zip
+.well-known.tar
 .zeus.sock
 .zfs/
 .zip
